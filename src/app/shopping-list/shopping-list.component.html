@@ -1,0 +1,16 @@
+<div grid>
+    <app-shopping-edit></app-shopping-edit>
+    <hr />
+    <!-- <ul class="list-disc pl-4">
+        <a class="cursor-pointer text-blue-500 hover:underline" *ngFor="let ingredient of ingredients" href="">
+            {{ingredient.name}} ({{ingredient.amount}})</a>
+    </ul> -->
+
+    <ul class="list-disc pl-4">
+        <div *ngFor="let ingredient of ingredients" :key="ingredient.name">
+            <a class="cursor-pointer text-blue-500 hover:underline" href="">{{ ingredient.name }} ({{ ingredient.amount
+                }})</a>
+        </div>
+    </ul>
+
+</div>

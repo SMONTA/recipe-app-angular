@@ -1,0 +1,7 @@
+a {
+  @apply no-underline tracking-wide text-lg;
+}
+
+li {
+  @apply list-none;
+}

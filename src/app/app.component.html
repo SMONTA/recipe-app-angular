@@ -1,5 +1,5 @@
-<app-header></app-header>
+<app-header (selectorEmitter)="onNavigation($event)"></app-header>
 <div>
-    <app-recipes></app-recipes>
-    <app-shopping-list></app-shopping-list>
+    <app-recipes *ngIf="selectedFeature === 'recipe'"></app-recipes>
+    <app-shopping-list *ngIf="selectedFeature === 'shopping'"></app-shopping-list>
 </div>

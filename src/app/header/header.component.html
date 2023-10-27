@@ -8,16 +8,16 @@
                 </svg>
             </label>
             <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Recipes</a></li>
-                <li><a>Shopping</a></li>
+                <li><a (click)="selectRecipe()">Recipes</a></li>
+                <li><a (click)="selectShopping()">Shopping</a></li>
             </ul>
         </div>
         <a class="btn btn-ghost normal-case text-xl">The Recipe Book</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-            <li><a>Recipes</a></li>
-            <li><a>Shopping</a></li>
+            <li><a (click)="selectRecipe()">Recipes</a></li>
+            <li><a (click)="selectShopping()">Shopping</a></li>
         </ul>
     </div>
 

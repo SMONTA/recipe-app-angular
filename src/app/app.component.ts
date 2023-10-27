@@ -10,7 +10,7 @@ export class AppComponent {
 
   selectedFeature: string = "recipe";
 
-  onNavigation(feature) {
+  onNavigation(feature: string) {
     this.selectedFeature = feature;
   }
 }

@@ -1,17 +1,17 @@
 <div class="grid grid-cols-1">
     <div class="col-span-12">
-        <img src="" alt="" class="w-full">
+        <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="w-1/2">
     </div>
 </div>
 <div class="grid grid-cols-1">
     <div class="col-span-12">
-        <h1 class="text-2xl font-bold">Recipe Name</h1>
+        <h1 class="text-2xl font-bold">{{recipe.name}}</h1>
     </div>
 </div>
 <div class="grid grid-cols-1">
     <div class="col-span-12">
         <div class="btn-group">
-            <div class="dropdown mt-5 mb-32 ">
+            <div class="dropdown mt-5 mb-5">
                 <button class="custom-button">Manage Recipe</button>
                 <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                     <li><a href="#">To Shopping List</a></li>
@@ -24,7 +24,7 @@
 </div>
 <div class="grid grid-cols-1">
     <div class="col-span-12">
-        Description
+        {{recipe.description}}
     </div>
 </div>
 <div class="grid grid-cols-1">

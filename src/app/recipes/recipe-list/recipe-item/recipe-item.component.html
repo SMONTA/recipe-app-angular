@@ -1,1 +1,11 @@
-<p>recipe-item works!</p>
+<a href="#" class="m-2" data-theme="retro">
+    <div class="flex w-96 bg-base-100 shadow-xl rounded-sm">
+        <div class="card-body">
+            <h2 class="card-title">{{recipe.name}}</h2>
+            <p>{{recipe.description}}</p>
+        </div>
+        <!-- <figure><img src="{{recipe.imagePath}}" alt=" {{recipe.name}}" /></figure> -->
+        <figure class="w-36 h-auto"><img [src]="recipe.imagePath" alt=" {{recipe.name}}" />
+        </figure>
+    </div>
+</a>

@@ -1,5 +1,5 @@
 <div grid>
-    <app-shopping-edit></app-shopping-edit>
+    <app-shopping-edit (addIngredientEmitter)="addIngredient($event)"></app-shopping-edit>
     <hr />
     <!-- <ul class="list-disc pl-4">
         <a class="cursor-pointer text-blue-500 hover:underline" *ngFor="let ingredient of ingredients" href="">

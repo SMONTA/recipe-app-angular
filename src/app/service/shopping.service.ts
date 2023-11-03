@@ -19,7 +19,11 @@ export class ShoppingService {
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    ingredients.forEach((ingredient) => this.addIngredient(ingredient));
+    console.log("Function called: " + ingredients);
+    // This solution works but it emits unnecessary events so we can use ES6 feature ...e=ingredients
+    // ingredients.forEach((ingredient) => this.addIngredient(ingredient));
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit(this.getIngredients());
   }
 
   getIngredients() {

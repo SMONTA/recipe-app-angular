@@ -14,7 +14,7 @@
             <div class="dropdown mt-5 mb-5">
                 <button class="custom-button">Manage Recipe</button>
                 <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                    <li><a href="#">To Shopping List</a></li>
+                    <li><a href="#" (click)="onToShoppingList()">To Shopping List</a></li>
                     <li><a href="#">Edit Recipe</a></li>
                     <li><a href="#">Delete Recipe</a></li>
                 </ul>
@@ -29,8 +29,9 @@
 </div>
 <div class="grid grid-cols-1">
     <div class="col-span-12">
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let item of recipe.ingredients"> {{ item.name}} - {{item.amount}}</li>
+        <ul class="w-56 ">
+            <li class="bg-base-200 mt-2 rounded-md" *ngFor="let item of recipe.ingredients"> {{ item.name}} -
+                {{item.amount}}</li>
         </ul>
     </div>
 </div>

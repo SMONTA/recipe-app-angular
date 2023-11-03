@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Recipe } from "../entities/recipe.model";
 
 // @Injectable({
@@ -17,6 +17,8 @@ export class RecipeService {
       "https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg"
     ),
   ];
+
+  recipeSelected = new EventEmitter<Recipe>();
   constructor() {}
 
   getRecipes() {

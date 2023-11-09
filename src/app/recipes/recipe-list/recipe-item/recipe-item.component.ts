@@ -9,13 +9,4 @@ import { RecipeService } from "src/app/service/recipe.service";
 })
 export class RecipeItemComponent {
   @Input() recipe: Recipe;
-
-  constructor(private recipeService: RecipeService) {}
-  // @Output() recipeEmitterChild = new EventEmitter<void>();
-
-  onSelectRecipe() {
-    this.recipeService.recipeSelected.emit(this.recipe);
-    // this.recipeEmitterChild.emit();
-    // console.log("this.recipeEmitterChild.emit(); event fired");
-  }
 }

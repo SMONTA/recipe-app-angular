@@ -5,3 +5,6 @@ a {
 li {
   @apply list-none;
 }
+.active {
+  @apply bg-secondary-focus rounded-lg text-yellow-50;
+}

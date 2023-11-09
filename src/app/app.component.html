@@ -1,5 +1,6 @@
 <app-header (selectorEmitter)="onNavigation($event)"></app-header>
 <div>
-    <app-recipes *ngIf="selectedFeature === 'recipe'"></app-recipes>
-    <app-shopping-list *ngIf="selectedFeature === 'shopping'"></app-shopping-list>
+    <!-- <app-recipes *ngIf="selectedFeature === 'recipe'"></app-recipes>
+    <app-shopping-list *ngIf="selectedFeature === 'shopping'"></app-shopping-list> -->
+    <router-outlet></router-outlet>
 </div>

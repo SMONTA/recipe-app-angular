@@ -7,5 +7,5 @@ li {
 }
 
 .active {
-  @apply rounded-xl;
+  @apply bg-secondary-focus rounded-xl;
 }

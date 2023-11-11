@@ -1,5 +1,6 @@
 <div class="flex flex-col items-start ml-5  my-10 w-full">
-    <div class="custom-button">New Recipe</div>
+    <button class="custom-button" [routerLink]="['new']">New Recipe</button>
+
     <app-recipe-item *ngFor="let recipeItem of recipes; let i = index" class="flex" [recipe]="recipeItem" [index]="i">
     </app-recipe-item>
 </div>

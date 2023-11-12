@@ -1,11 +1,12 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Ingredient } from "../entities/ingredient.model";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class ShoppingService {
-  ingredientsChanged = new EventEmitter<Ingredient[]>();
+  ingredientsChanged = new Subject<Ingredient[]>();
   private ingredients: Ingredient[] = [
     new Ingredient("Appels", 5),
     new Ingredient("Tomatoes", 6),
@@ -15,7 +16,7 @@ export class ShoppingService {
 
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.ingredientsChanged.emit(this.getIngredients());
+    this.ingredientsChanged.next(this.getIngredients());
   }
 
   addIngredients(ingredients: Ingredient[]) {
@@ -23,7 +24,7 @@ export class ShoppingService {
     // This solution works but it emits unnecessary events so we can use ES6 feature ...e=ingredients
     // ingredients.forEach((ingredient) => this.addIngredient(ingredient));
     this.ingredients.push(...ingredients);
-    this.ingredientsChanged.emit(this.getIngredients());
+    this.ingredientsChanged.next(this.getIngredients());
   }
 
   getIngredients() {

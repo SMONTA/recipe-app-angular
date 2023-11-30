@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="onAddIngredient(f)" #f="ngForm">
     <div class="grid sm:grid-cols-1 gap-4 md:grid-cols-2">
         <div class="form-control">
             <label class="label">
@@ -6,7 +6,7 @@
             </label>
             <label class="input-group">
                 <span>Name</span>
-                <input type="text" placeholder="ingredient name" class="input input-bordered" #nameInput>
+                <input type="text" placeholder="ingredient name" class="input input-bordered" name="name" ngModel>
             </label>
         </div>
 
@@ -16,7 +16,7 @@
             </label>
             <label class="input-group">
                 <span>Amount</span>
-                <input type="number" placeholder="Amount" class="input input-bordered" #amountInput>
+                <input type="number" placeholder="Amount" class="input input-bordered" name="amount" ngModel>
             </label>
         </div>
     </div>
@@ -24,9 +24,8 @@
     <div class="my-6 flex items-center justify-start gap-x-6">
         <button type="button" class="btn text-sm font-semibold leading-6 text-gray-900">Cancel</button>
         <button type="button" class="btn btn-error text-sm font-semibold leading-6 text-gray-900">Delete</button>
-        <button type="button"
+        <button type="submit"
             class="btn btn-primary x-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 
-             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            (click)="onAddIngredient(nameInput, amountInput)">Add</button>
+             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add</button>
     </div>
 </form>

@@ -13,7 +13,8 @@ import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-ed
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { DropdownDirective } from "./entities/dropdown.directive";
 import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,12 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RecipeStartComponent,
     RecipeEditComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

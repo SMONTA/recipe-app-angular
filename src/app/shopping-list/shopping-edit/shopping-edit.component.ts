@@ -1,4 +1,6 @@
+import { NgFor } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Ingredient } from "src/app/entities/ingredient.model";
 import { ShoppingService } from "src/app/service/shopping.service";
 
@@ -12,9 +14,12 @@ export class ShoppingEditComponent {
 
   constructor(private shoppingService: ShoppingService) {}
 
-  onAddIngredient(nameInput: HTMLInputElement, amountInout: HTMLInputElement) {
+  onAddIngredient(form: NgForm) {
+    const value = form.value;
+    console.log(form.value);
+
     this.shoppingService.addIngredient(
-      new Ingredient(nameInput.value, parseInt(amountInout.value))
+      new Ingredient(value.name, parseInt(value.amount))
     );
   }
 }

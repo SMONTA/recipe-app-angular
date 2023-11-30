@@ -6,7 +6,8 @@
             </label>
             <label class="input-group">
                 <span>Name</span>
-                <input type="text" placeholder="ingredient name" class="input input-bordered" name="name" ngModel>
+                <input type="text" placeholder="ingredient name" class="input input-bordered" name="name" ngModel
+                    required>
             </label>
         </div>
 
@@ -16,7 +17,8 @@
             </label>
             <label class="input-group">
                 <span>Amount</span>
-                <input type="number" placeholder="Amount" class="input input-bordered" name="amount" ngModel>
+                <input type="number" placeholder="Amount" class="input input-bordered" name="amount" ngModel required
+                    pattern="^[1-9]+[0-9]*$">
             </label>
         </div>
     </div>
@@ -24,7 +26,7 @@
     <div class="my-6 flex items-center justify-start gap-x-6">
         <button type="button" class="btn text-sm font-semibold leading-6 text-gray-900">Cancel</button>
         <button type="button" class="btn btn-error text-sm font-semibold leading-6 text-gray-900">Delete</button>
-        <button type="submit"
+        <button type="submit" [disabled]="!f.valid"
             class="btn btn-primary x-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 
              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add</button>
     </div>

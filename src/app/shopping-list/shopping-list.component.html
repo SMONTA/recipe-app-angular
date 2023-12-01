@@ -7,9 +7,10 @@
     </ul> -->
 
     <ul class="list-disc pl-4">
-        <div *ngFor="let ingredient of ingredients" :key="ingredient.name">
-            <a class="cursor-pointer text-blue-500 hover:underline" href="">{{ ingredient.name }} ({{ ingredient.amount
-                }})</a>
+        <div *ngFor="let ingredient of ingredients let i = index " :key="ingredient.name">
+            <a class="cursor-pointer text-blue-500 hover:underline" (click)="onEditItem(i)">
+                {{ ingredient.name }} ({{ ingredient.amount}})
+            </a>
         </div>
     </ul>
 

@@ -24,7 +24,8 @@
     </div>
 
     <div class="my-6 flex items-center justify-start gap-x-6">
-        <button type="button" class="btn text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+        <button type="button" class="btn text-sm font-semibold leading-6 text-gray-900"
+            (click)="onCancel()">Cancel</button>
         <button type="button" class="btn btn-error text-sm font-semibold leading-6 text-gray-900">Delete</button>
         <button type="submit" [disabled]="!f.valid"
             class="btn btn-primary x-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 

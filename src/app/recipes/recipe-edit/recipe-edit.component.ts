@@ -82,8 +82,11 @@ export class RecipeEditComponent implements OnInit {
   addIngredient() {
     this.ingredientsControl.push(
       this.fb.group({
-        name: [],
-        amount: [],
+        name: ["", Validators.required],
+        amount: [
+          0,
+          [Validators.required, Validators.pattern("^[1-9]+[0-9]*$")],
+        ],
       })
     );
   }

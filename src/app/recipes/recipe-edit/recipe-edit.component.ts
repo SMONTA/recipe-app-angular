@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -17,4 +18,10 @@ export class RecipeEditComponent implements OnInit {
       console.log(this.editMode);
     });
   }
+
+  onRecipeSubmit(form: NgForm) {}
+
+  onClear() {}
+
+  onDelete() {}
 }

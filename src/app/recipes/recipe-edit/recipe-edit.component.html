@@ -42,9 +42,20 @@
         </div>
 
         <div formArrayName="ingredients">
-            <input class="input input-bordered  w-72 max-w-xs text-black placeholder:text-black/70 mr-5" type="text">
-            <input class="input input-bordered  w-24 text-black placeholder:text-black/70" type="number">
-            <button class="btn btn-error ml-5">X</button>
+            <div *ngFor="let ingredientCtl of ingredientsControl.controls; let i = index" [formGroupName]="i"
+                class="mb-3">
+                <input formControlName="name"
+                    class="input input-bordered  w-72 max-w-xs text-black placeholder:text-black/70 mr-5" type="text"
+                    [fo]>
+                <input formControlName="amount" class="input input-bordered  w-24 text-black placeholder:text-black/70"
+                    type="number">
+                <button class="btn btn-error ml-5" type="button" (click)="removeIngredient()">X</button>
+            </div>
+            <hr>
+            <button class="btn btn-success text-sm font-semibold leading-6 text-gray-700 mt-5" type="button"
+                (click)="addIngredient()">Add
+                Ingredient</button>
+
         </div>
     </div>
 </form>

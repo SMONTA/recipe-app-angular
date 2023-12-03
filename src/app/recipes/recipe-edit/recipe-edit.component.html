@@ -1,10 +1,10 @@
-<form (ngSubmit)="onRecipeSubmit(f)" #f="ngForm">
+<form [formGroup]="recipeForm" (ngSubmit)="onRecipeSubmit()">
     <div class="my-6 flex items-center justify-start gap-x-6">
         <button type="button" class="btn  btn-warning text-sm font-semibold leading-6 text-gray-700"
             (click)="onClear()">Cancel</button>
         <button *ngIf="editMode" type="button" class="btn btn-error text-sm font-semibold leading-6 text-gray-900"
             (click)="onDelete()">Delete</button>
-        <button type="submit" [disabled]="!f.valid"
+        <button type="submit" [disabled]="!recipeForm.valid"
             class="btn btn-primary x-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 
              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{editMode?
             'Update':'Save'}}</button>
@@ -15,7 +15,8 @@
                 <span class="label-text text-lg">Name</span>
             </label>
             <input type="text" placeholder="Recipe name"
-                class="input input-bordered  w-full max-w-lg text-black placeholder:text-black/70" id="name">
+                class="input input-bordered  w-full max-w-lg text-black placeholder:text-black/70" id="name"
+                formControlName="name">
         </div>
 
         <div class="form-control">
@@ -24,7 +25,8 @@
             </label>
 
             <input type="text" placeholder="Recipe URL"
-                class="input input-bordered  w-full max-w-lg text-black placeholder:text-black/70" id="imagePath">
+                class="input input-bordered  w-full max-w-lg text-black placeholder:text-black/70" id="imagePath"
+                formControlName="imagePath">
         </div>
 
         <div class="form-control">
@@ -36,10 +38,10 @@
                 <span class="label-text text-lg">Description</span>
             </label>
             <textarea class="textarea textarea-bordered h-24 w-full max-w-lg" name="description" id="description"
-                cols="10" rows="6"></textarea>
+                formControlName="description" cols="10" rows="6"></textarea>
         </div>
 
-        <div>
+        <div formArrayName="ingredients">
             <input class="input input-bordered  w-72 max-w-xs text-black placeholder:text-black/70 mr-5" type="text">
             <input class="input input-bordered  w-24 text-black placeholder:text-black/70" type="number">
             <button class="btn btn-error ml-5">X</button>

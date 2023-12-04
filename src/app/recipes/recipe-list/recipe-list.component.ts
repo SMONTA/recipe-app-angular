@@ -13,6 +13,9 @@ export class RecipeListComponent implements OnInit {
   constructor(private recipeService: RecipeService) {}
 
   ngOnInit() {
+    this.recipeService.recipeChangedSubject.subscribe((value) => {
+      this.recipes = value;
+    });
     this.recipes = this.recipeService.getRecipes();
   }
 }

@@ -88,7 +88,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   removeIngredient(ingredientIdx: number) {
-    this.ingredientsControl.controls.splice(ingredientIdx, 1);
+    this.ingredientsControl.removeAt(ingredientIdx);
   }
 
   addIngredient() {

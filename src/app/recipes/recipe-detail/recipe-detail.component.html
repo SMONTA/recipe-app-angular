@@ -16,7 +16,7 @@
                 <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                     <li><a (click)="onAddToShoppingList()"><button>To Shopping List</button></a></li>
                     <li><a [routerLink]="['edit']">Edit Recipe</a></li>
-                    <li><a>Delete Recipe</a></li>
+                    <li><a (click)="onDeleteRecipe()"> <button>Delete Recipe</button></a></li>
                 </ul>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onRecipeSubmit()">
     <div class="my-6 flex items-center justify-start gap-x-6">
         <button type="button" class="btn  btn-warning text-sm font-semibold leading-6 text-gray-700"
-            (click)="onClear()">Cancel</button>
+            (click)="onCancel()">Cancel</button>
         <button *ngIf="editMode" type="button" class="btn btn-error text-sm font-semibold leading-6 text-gray-900"
             (click)="onDelete()">Delete</button>
         <button type="submit" [disabled]="!recipeForm.valid"
@@ -45,17 +45,15 @@
             <div *ngFor="let ingredientCtl of ingredientsControl.controls; let i = index" [formGroupName]="i"
                 class="mb-3">
                 <input formControlName="name"
-                    class="input input-bordered  w-72 max-w-xs text-black placeholder:text-black/70 mr-5" type="text"
+                    class="input input-bordered  w-60 max-w-xs text-black placeholder:text-black/70 mr-5" type="text"
                     [fo]>
-                <input formControlName="amount" class="input input-bordered  w-24 text-black placeholder:text-black/70"
+                <input formControlName="amount" class="input input-bordered  w-12 text-black placeholder:text-black/70"
                     type="number">
-                <button class="btn btn-error ml-5" type="button" (click)="removeIngredient()">X</button>
+                <button class="btn btn-error ml-5" type="button" (click)="removeIngredient(i)">X</button>
             </div>
             <hr class="w-full max-w-lg">
             <button class="btn btn-success text-sm font-semibold leading-6 text-gray-700 mt-5" type="button"
-                (click)="addIngredient()">Add
-                Ingredient</button>
-
+                (click)="addIngredient()">Add Ingredient</button>
         </div>
     </div>
 </form>

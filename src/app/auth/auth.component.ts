@@ -1,6 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
+import { trigger } from "@angular/animations";
 
 @Component({
   selector: "app-auth",
@@ -10,11 +11,14 @@ import { AuthService } from "../service/auth.service";
 export class AuthComponent {
   authService = inject(AuthService);
   isLoginMode = true;
+  isLoading = false;
+  error: string = null;
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
     }
+    this.isLoading = true;
 
     const email = form.value.email;
     const password = form.value.password;
@@ -31,12 +35,16 @@ export class AuthComponent {
       this.authService.signUp(email, password).subscribe({
         next: (respData) => {
           console.log(respData);
+          this.isLoading = false;
         },
         error: (error) => {
           console.log(error);
+          this.error = `An error occurred: ${error.message}`;
+          this.isLoading = false;
         },
       });
     }
+
     form.reset();
   }
 

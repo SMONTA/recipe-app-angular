@@ -1,28 +1,31 @@
 <div class="relative flex flex-col justify-center h-screen overflow-hidden">
     <div class="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2  ring-gray-800/50 lg:max-w-lg">
         <!-- <h1 class="text-3xl font-semibold text-center text-gray-700">DaisyUI</h1> -->
-        <form class="space-y-4" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <form class="space-y-4" (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
             <div>
                 <label class="label">
                     <span class="text-base label-text">Email</span>
                 </label>
                 <input name="email" id="email" type="text" placeholder="Email Address" ngModel
-                    class="w-full input input-bordered" required />
+                    class="w-full input input-bordered" required email />
             </div>
             <div>
                 <label class="label">
                     <span class="text-base label-text">Password</span>
                 </label>
                 <input name="password" id="password" type="password" placeholder="Enter Password"
-                    class="w-full input input-bordered" ngModel required="" />
+                    class="w-full input input-bordered" ngModel required minlength="6" />
             </div>
             <a href="#" class="text-xs text-gray-600 hover:underline hover:text-blue-600">Forget Password?</a>
             <div>
-                <button [disabled]="!f.valid" class="btn btn-block" type="submit">Login</button>
+                <button [disabled]="!authForm.valid" class="btn btn-block" type="submit"> {{ isLoginMode ? 'Login':
+                    'Sign
+                    Up'}}</button>
             </div>
 
             <div>
-                <button class="btn btn-block btn-info">Switch To Login</button>
+                <button class="btn btn-block btn-info" (click)="onSwitchMode()" type="button">Switch To {{ isLoginMode ?
+                    'Sign Up': 'Login'}}</button>
             </div>
         </form>
     </div>

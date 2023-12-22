@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Inject, Injectable, inject } from "@angular/core";
 import { Recipe } from "../entities/recipe.model";
 import { RecipeService } from "./recipe.service";
@@ -23,7 +23,9 @@ export class DataStorageService {
 
   fetchRecipes() {
     return this.http
-      .get<Recipe[]>(this.URL)
+      .get<Recipe[]>(this.URL, {
+        headers: new HttpHeaders({ auth: "dummy_auth" }),
+      })
       .pipe(
         map((recipes) => {
           return recipes.map((recipe) => {

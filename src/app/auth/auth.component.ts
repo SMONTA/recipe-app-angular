@@ -23,24 +23,27 @@ export class AuthComponent {
     const email = form.value.email;
     const password = form.value.password;
     if (this.isLoginMode) {
-      // this.authService.signIn(email, password).subscribe({
-      //   next: (respData) => {
-      //     console.log(respData);
-      //   },
-      //   error: (error) => {
-      //     console.log(error);
-      //   },
-      // });
+      this.authService.signIn(email, password).subscribe({
+        next: (respData) => {
+          console.log(respData);
+          this.isLoading = false;
+        },
+        error: (errorMessage) => {
+          console.log(errorMessage);
+          this.isLoading = false;
+          this.error = errorMessage;
+        },
+      });
     } else {
       this.authService.signUp(email, password).subscribe({
         next: (respData) => {
           console.log(respData);
           this.isLoading = false;
         },
-        error: (error) => {
-          console.log(error);
-          this.error = `An error occurred: ${error.message}`;
+        error: (errorMessage) => {
+          console.log(errorMessage);
           this.isLoading = false;
+          this.error = errorMessage;
         },
       });
     }
@@ -50,5 +53,9 @@ export class AuthComponent {
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  handleError() {
+    this.error = null;
   }
 }

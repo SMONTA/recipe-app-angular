@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Inject, Injectable, inject } from "@angular/core";
 import { Recipe } from "../entities/recipe.model";
 import { RecipeService } from "./recipe.service";
-import { map, tap } from "rxjs/operators";
+import { exhaustMap, map, take, tap } from "rxjs/operators";
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +13,10 @@ export class DataStorageService {
     "https://ng-course-recipe-29586-default-rtdb.europe-west1.firebasedatabase.app/recipes.json";
   private http = inject(HttpClient);
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private authService: AuthService
+  ) {}
 
   storeRecipes() {
     let recipes = this.recipeService.getRecipes();
@@ -22,20 +26,24 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.http
-      .get<Recipe[]>(this.URL, {
-        headers: new HttpHeaders({ auth: "dummy_auth" }),
-      })
-      .pipe(
-        map((recipes) => {
-          return recipes.map((recipe) => {
-            return {
-              ...recipe,
-              ingredients: recipe.ingredients ? recipe.ingredients : [],
-            };
-          });
-        })
-      )
-      .pipe(tap((recipes) => this.recipeService.setRecipes(recipes)));
+    return this.authService.userSubject.pipe(
+      take(1),
+      exhaustMap((user) => {
+        console.log("User logged in: ");
+        console.log(user.token);
+        return this.http.get<Recipe[]>(this.URL, {
+          params: new HttpParams().set("auth", user.token),
+        });
+      }),
+      map((recipes) => {
+        return recipes.map((recipe) => {
+          return {
+            ...recipe,
+            ingredients: recipe.ingredients ? recipe.ingredients : [],
+          };
+        });
+      }),
+      tap((recipes) => this.recipeService.setRecipes(recipes))
+    );
   }
 }

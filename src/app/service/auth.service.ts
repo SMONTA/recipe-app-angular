@@ -4,10 +4,12 @@ import { AuthResponseData } from "../entities/auth-response-data.model";
 import { BehaviorSubject, Subject, catchError, tap, throwError } from "rxjs";
 import { User } from "../entities/user.model";
 import { TaggedTemplateExpr } from "@angular/compiler";
+import { RouteConfigLoadEnd, Router } from "@angular/router";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
   http = inject(HttpClient);
+  router = inject(Router);
   API_KEY = "AIzaSyCTAysTqPc2xuoia2i0SzquwRUDLPXf0Qw";
   urlSignUp = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
   urlSignIn = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`;
@@ -51,6 +53,11 @@ export class AuthService {
           )
         )
       );
+  }
+
+  logout() {
+    this.userSubject.next(null);
+    this.router.navigate(["/login"]);
   }
 
   private handleAuthentication(

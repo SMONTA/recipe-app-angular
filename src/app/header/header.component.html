@@ -8,28 +8,32 @@
                 </svg>
             </label>
             <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <li *ngIf="isAuthenticated" role="presentation" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
                     <a routerLink="/recipes">Recipes</a>
                 </li>
                 <li role="presentation" routerLinkActive="active"><a routerLink="/shopping-list">Shopping</a></li>
-                <li role="presentation" routerLinkActive="active"><a routerLink="/login">Authenticate</a></li>
+                <li role="presentation" routerLinkActive="active" *ngIf="!isAuthenticated"><a
+                        routerLink="/login">Authenticate</a></li>
             </ul>
         </div>
         <a class="btn btn-ghost normal-case text-xl">The Recipe Book</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-            <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                    routerLink="/recipes">Recipes</a></li>
+            <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                *ngIf="isAuthenticated"><a routerLink="/recipes">Recipes</a></li>
             <li role="presentation" routerLinkActive="active"><a routerLink="/shopping-list">Shopping</a></li>
-            <li role="presentation" routerLinkActive="active"><a routerLink="/login">Authenticate</a></li>
+            <li role="presentation" routerLinkActive="active" *ngIf="!isAuthenticated"><a
+                    routerLink="/login">Authenticate</a></li>
         </ul>
     </div>
 
     <div class="flex justify-end flex-1 px-2">
         <div class="flex items-stretch">
+            <a class="btn btn-ghost normal-case text-xl" *ngIf="isAuthenticated">Logout</a>
             <div class="dropdown dropdown-hover dropdown-left">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Manage
+                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn" *ngIf="isAuthenticated">Manage
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path fill-rule="evenodd" clip-rule="evenodd"

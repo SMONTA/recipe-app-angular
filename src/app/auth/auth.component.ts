@@ -4,6 +4,7 @@ import { AuthService } from "../service/auth.service";
 import { trigger } from "@angular/animations";
 import { Observable } from "rxjs";
 import { AuthResponseData } from "../entities/auth-response-data.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-auth",
@@ -12,6 +13,7 @@ import { AuthResponseData } from "../entities/auth-response-data.model";
 })
 export class AuthComponent {
   authService = inject(AuthService);
+  router = inject(Router);
   isLoginMode = true;
   isLoading = false;
   error: string = null;
@@ -34,6 +36,7 @@ export class AuthComponent {
       next: (respData) => {
         console.log(respData);
         this.isLoading = false;
+        this.router.navigate(["/recipes"]);
       },
       error: (errorMessage) => {
         console.log(errorMessage);

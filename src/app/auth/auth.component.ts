@@ -52,7 +52,7 @@ export class AuthComponent {
     this.isLoginMode = !this.isLoginMode;
   }
 
-  handleError() {
+  onHandleError() {
     this.error = null;
   }
 }

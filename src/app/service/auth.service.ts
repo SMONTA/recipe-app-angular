@@ -57,7 +57,36 @@ export class AuthService {
 
   logout() {
     this.userSubject.next(null);
+    localStorage.clear();
     this.router.navigate(["/login"]);
+  }
+
+  autoLogin() {
+    const userData: {
+      email: string;
+      id: string;
+      _token: string;
+      _expirationData: string;
+    } = JSON.parse(localStorage.getItem("userData"));
+
+    console.log("auto login stated !" + userData);
+
+    console.log(userData);
+
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._expirationData)
+    );
+
+    if (loadedUser.token) {
+      console.log("loaded user !");
+      this.userSubject.next(loadedUser);
+    }
   }
 
   private handleAuthentication(
@@ -69,6 +98,7 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, id, idToken, expirationDate);
     this.userSubject.next(user);
+    localStorage.setItem("userData", JSON.stringify(user));
   }
 
   private handleError(errorResp: HttpErrorResponse) {

@@ -1,5 +1,5 @@
 <div class="relative flex flex-col justify-center h-screen overflow-hidden">
-
+    <ng-template #container #elseBlock></ng-template>
     <span *ngIf="isLoading" class="justify-items-center   align-middle loading loading-ring loading-lg text-info">
     </span>
     <div *ngIf="!isLoading"
@@ -13,7 +13,8 @@
             <span> {{error}}</span>
             <button class="btn-circle" (click)="handleError()" >X</button>
         </div> -->
-        <app-alert [errorMessage]="error" (close)="onHandleError()" *ngIf="error"> </app-alert>
+        <!-- <app-alert [errorMessage]="error" (close)="onHandleError()" *ngIf="error"> </app-alert> -->
+
         <!-- <h1 class="text-3xl font-semibold text-center text-gray-700">DaisyUI</h1> -->
         <form class="space-y-4" (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
             <div>

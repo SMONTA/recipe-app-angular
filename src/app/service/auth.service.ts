@@ -60,7 +60,7 @@ export class AuthService {
     this.userSubject.next(null);
     localStorage.removeItem("userData");
     this.router.navigate(["/login"]);
-    if (!this.tokenExpirationTimer) {
+    if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
 
@@ -93,7 +93,7 @@ export class AuthService {
       const expirationDuration =
         new Date(userData._expirationData).getTime() - new Date().getTime();
       this.userSubject.next(loadedUser);
-      this.autoLogout(expirationDuration);
+      // this.autoLogout(expirationDuration);
     }
   }
 

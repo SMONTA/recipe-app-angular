@@ -9,8 +9,6 @@ import {
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { DropdownDirective } from "./entities/dropdown.directive";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RecipeService } from "./service/recipe.service";
@@ -20,13 +18,12 @@ import { AuthInterceptorService } from "./service/auth-interceptor.service";
 import { AlertComponent } from "./shared/alert/alert.component";
 import { NgComponentOutlet } from "@angular/common";
 import { RecipesModule } from "./recipes/recipes.module";
+import { ShoppingModule } from "./shopping-list/shopping-list.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropdownDirective,
     AuthComponent,
     AlertComponent,
@@ -39,6 +36,7 @@ import { RecipesModule } from "./recipes/recipes.module";
     AppRoutingModule,
     NgComponentOutlet,
     RecipesModule,
+    ShoppingModule,
   ],
   providers: [
     ShoppingService,

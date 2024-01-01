@@ -5,12 +5,13 @@ import { RecipeService } from "./recipe.service";
 import { exhaustMap, map, take, tap } from "rxjs/operators";
 import { AuthService } from "./auth.service";
 
+import { environment } from "src/environments/environment";
+
 @Injectable({
   providedIn: "root",
 })
 export class DataStorageService {
-  private URL =
-    "https://ng-course-recipe-29586-default-rtdb.europe-west1.firebasedatabase.app/recipes.json";
+  private URL = environment.firebaseUrl;
   private http = inject(HttpClient);
 
   constructor(

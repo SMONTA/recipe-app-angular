@@ -1,6 +1,9 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {
+  BrowserAnimationsModule,
+  provideAnimations,
+} from "@angular/platform-browser/animations";
 import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
@@ -47,6 +50,7 @@ import { ShoppingModule } from "./shopping-list/shopping-list.module";
       useClass: AuthInterceptorService,
       multi: true,
     },
+    provideAnimations(),
   ],
   bootstrap: [AppComponent],
 })

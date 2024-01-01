@@ -43,7 +43,7 @@
 
         <div formArrayName="ingredients">
             <div *ngFor="let ingredientCtl of ingredientsControl.controls; let i = index" [formGroupName]="i"
-                class="mb-3">
+                class="mb-3" [@ingredient]>
                 <input formControlName="name"
                     class="input input-bordered  w-60 max-w-xs text-black placeholder:text-black/70 mr-5" type="text"
                     [fo]>

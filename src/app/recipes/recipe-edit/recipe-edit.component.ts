@@ -1,3 +1,12 @@
+import {
+  animate,
+  group,
+  query,
+  state,
+  style,
+  transition,
+  trigger,
+} from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import {
   FormArray,
@@ -14,8 +23,19 @@ import { RecipeService } from "src/app/service/recipe.service";
   selector: "app-recipe-edit",
   templateUrl: "./recipe-edit.component.html",
   styleUrls: ["./recipe-edit.component.css"],
+  animations: [
+    trigger("ingredient", [
+      transition(":leave", [
+        style({
+          opacity: 1,
+        }),
+        animate("500ms ease-out", style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class RecipeEditComponent implements OnInit {
+  // ingredientState = null;
   id: number;
   editMode = false;
   recipeForm: FormGroup;
@@ -88,6 +108,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   removeIngredient(ingredientIdx: number) {
+    // this.ingredientState = "remove";
     this.ingredientsControl.removeAt(ingredientIdx);
   }
 

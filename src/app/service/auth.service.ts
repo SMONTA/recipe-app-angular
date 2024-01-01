@@ -5,14 +5,15 @@ import { BehaviorSubject, Subject, catchError, tap, throwError } from "rxjs";
 import { User } from "../entities/user.model";
 import { TaggedTemplateExpr } from "@angular/compiler";
 import { RouteConfigLoadEnd, Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
   http = inject(HttpClient);
   router = inject(Router);
-  API_KEY = "AIzaSyCTAysTqPc2xuoia2i0SzquwRUDLPXf0Qw";
-  urlSignUp = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
-  urlSignIn = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`;
+  API_KEY = environment.API_KEY;
+  urlSignUp = environment.urlSignUp + environment.API_KEY;
+  urlSignIn = environment.urlSignIn + environment.API_KEY;
   userSubject = new BehaviorSubject<User>(null);
   tokenExpirationTimer: any;
 
